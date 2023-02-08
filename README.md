@@ -8,7 +8,7 @@ Passo a passo descritivo para criação de um sistema utilizando django, rest fr
 ```python
 python -m venv venv
 ```
-- [ ] Ativar o ambiente
+- [ ] Ativar o ambiente virtual
 1. No Windows
 ```
 venv\Scripts\activate 
