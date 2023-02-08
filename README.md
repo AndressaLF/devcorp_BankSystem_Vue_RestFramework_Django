@@ -4,29 +4,27 @@ Passo a passo descritivo para criação de um sistema utilizando django, rest fr
 
 ### Criando o ambiente virtual (venv)
 
-- [ ] Criar o ambiente 
-    ```python
+- [ ] Criar o ambiente
+```python
     python -m venv venv
-    ```
+```
 - [ ] Ativar o ambiente
-
-    1. No Windows
-    ```python
-    venv\Scripts\activate 
-    ```
-    2. No linux
-    ```python
-    source venv/bin/activate
-    ```
+1. No Windows
+```venv\Scripts\activate 
+```
+2. No linux
+```python
+source venv/bin/activate
+```
 - [ ] Criar o arquivo _requirementes.txt ou in_ com as extensões necessárias
-    ```txt
+```txt
     django
     rest_framework
     djangorestframework-simplejwt
     django-cors-headers
     djoser 
     mssql-django
-    ```
+```
 - [ ] Instalar as extensões
     ```python
     pip install -r requirements.txt 
