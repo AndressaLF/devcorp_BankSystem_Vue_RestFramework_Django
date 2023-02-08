@@ -6,11 +6,12 @@ Passo a passo descritivo para criação de um sistema utilizando django, rest fr
 
 - [ ] Criar o ambiente
 ```python
-    python -m venv venv
+python -m venv venv
 ```
 - [ ] Ativar o ambiente
 1. No Windows
-```venv\Scripts\activate 
+```
+venv\Scripts\activate 
 ```
 2. No linux
 ```python
