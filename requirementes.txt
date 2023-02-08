@@ -1,0 +1,6 @@
+django
+djoser
+django-cors-headers
+djangorestframework
+djangorestframework-simplejwt
+mssql-django
