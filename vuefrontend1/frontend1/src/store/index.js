@@ -24,6 +24,19 @@ export default createStore({
         state.token = ''
         state.isAuthenticated = false
       }
+    },
+    setToken(state, token) {
+      state.token = token
+      state.isAuthenticated = true
+    },
+    removeToken(state) {
+      state.user.id = ''
+      state.user.username = ''
+      state.token = ''
+      state.isAuthenticated = false
+    },
+    setUser(state, user) {
+      state.user = user
     }
   },
   actions: {

@@ -2,7 +2,7 @@
     <div class="page-sing-up">
         <div class="columns">
             <div class="column is-4 is-offset-4">
-                <h1 class="title">Sign up</h1>
+                <h1 class="title">Cadastrar</h1>
 
                 <form @submit.prevent="submitForm">
                     <div class="field">
@@ -20,33 +20,66 @@
                     </div>
 
                     <div class="notification is-danger" v-if="errors.length">
-                        <p 
-                            v-for="error in errors" 
-                            v-bind:key="error"
-                        >
+                        <p v-for="error in errors" v-bind:key="error">
                             {{ error }}
                         </p>
                     </div>
 
                     <div class="field">
                         <div class="control">
-                            <button class="button is-success">Sign up</button>
+                            <button class="button is-dark">Cadastrar</button>
                         </div>
                     </div>
                 </form>
 
                 <hr>
 
-                <router-link to="/log-in">Click here</router-link> to log in!
+                <router-link to="/log-in">Clique aqui</router-link> para entrar!
             </div>
         </div>
     </div>
 </template>
 
 <script>
+
+import axios from 'axios'
+
 export default {
     name: 'SingUp',
+    data() {
+        return {
+            username: '',
+            password: '',
+            errors: []
+        }
+    },
 
+    methods: {
+        submitForm(e) {
+            const formData = {
+                username: this.username,
+                password: this.password
+            }
+            axios
+                .post("/users/", formData)
+                .then(response => {
+                    console.log(response)
+                    this.$router.push('/log-in')
+                })
+                .catch(error => {
+                    if (error.response) {
+                        for (const property in error.response.data) {
+                            this.errors.push(`${property}: ${error.response.data[property]}`)
+                        }
+                        console.log(JSON.stringify(error.response.data))
+                    } else if (error.message) {
+                        console.log(JSON.stringify(error.message))
+                    } else {
+                        console.log(JSON.stringify(error))
+                    }
+                })
+        }
+    }
 }
 </script>
 

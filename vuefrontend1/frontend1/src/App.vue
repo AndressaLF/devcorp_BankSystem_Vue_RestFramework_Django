@@ -9,20 +9,29 @@
         </router-link>
       </div>
 
-      <div class="navbar-menu" id="navbar-menu">
+      <div class="navbar-menu">
         <div class="navbar-end">
+          <router-link to="/" class="navbar-item">Home</router-link>
           <router-link to="/correntistas" class="navbar-item">Correntistas</router-link>
           <router-link to="/movimentacoes" class="navbar-item">Movimentações</router-link>
 
-          <div class="navbar-item">
-            <div class="buttons">
+          <div class="navbar-menu">
+            <div class="navbar-end">
               <template v-if="$store.state.isAuthenticated">
-                <router-link to="/sing-up" class="button is-light">Sair</router-link>
+                <!--<router-link to="/correntistas" class="navbar-item">Correntistas</router-link>-->
+                <!--<router-link to="/movimentacoes" class="navbar-item">Movimentações</router-link>-->
               </template>
 
+
               <template v-else>
-                <router-link to="/log-in" class="button is-light">Entrar</router-link>
-                <router-link to="/sing-up" class="button is-light">Sair</router-link>
+                
+
+                <div class="navbar-item">
+                  <div class="buttons">
+                    <router-link to="/sing-up" class="button is-success"><strong>Cadastrar</strong></router-link>
+                    <router-link to="/log-in" class="button is-light">Entrar</router-link>
+                  </div>
+                </div>
               </template>
             </div>
           </div>
@@ -57,7 +66,7 @@ export default {
     const token = this.$store.state.token
 
     if (token) {
-      axios.defaults.headers.common['Authorization'] = "JWT " + access
+      axios.defaults.headers.common['Authorization'] = "Token " + access
     } else {
       axios.defaults.headers.common['Authorization'] = ""
     }
@@ -76,5 +85,4 @@ h1 {
   font-family: "Open Sans", sans-serif;
   font-weight: bold;
 }
-
 </style>
