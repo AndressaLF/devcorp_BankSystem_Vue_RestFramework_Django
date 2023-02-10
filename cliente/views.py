@@ -13,4 +13,6 @@ class MovimentacaoViewSet(viewsets.ModelViewSet):
     queryset = Movimentacoes.objects.all()
     serializer_class = MovimentacaoSerializer
 
+    
+
         
