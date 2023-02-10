@@ -22,44 +22,46 @@
 
 
                             <div class="field">
-                                <div class="field has-addons">
-                                    <p class="control">
+                                <div class="select is-primary">
+                                    <div class="control has-icons-left">
                                         <span class="select">
-                                            <select>
+                                            <select v-model="movimentacao.tipotransacao">
+                                                <option value="" disabled selected>Escolha a transação:</option>
+                                                <option>TD</option>
                                                 <option>DP</option>
                                                 <option>SQ</option>
                                                 <option>PG</option>
                                                 <option>TC</option>
-                                                <option>TD</option>
                                             </select>
                                         </span>
-                                    </p>
-                                    <p class="control">
-                                        <input class="input" type="text" placeholder="Tipo da Transação"
-                                            v-model="movimentacao.tipotransacao">
-                                    </p>
+                                        <div class="icon is-small is-left">
+                                            <i class="fas fa-envelope-open-text"></i>
+                                        </div>
+                                    </div>
+
                                 </div>
                             </div>
+
+
+
+
 
                             <div class="field">
                                 <div class="field has-addons">
                                     <p class="control">
-                                        <span class="select">
-                                            <select>
-                                                <option>$</option>
-                                            </select>
-                                        </span>
-                                    </p>
+                                        </p>
                                     <p class="control">
-                                        <input class="input" type="number" placeholder="Valor"
+                                        <input class="input" type="number" placeholder="$ Valor"
                                             v-model="movimentacao.valor">
                                     </p>
                                 </div>
                             </div>
 
+
                             <div class="control">
                                 <button class="button is-success">Enviar</button>
                             </div>
+
                         </div>
                     </form>
                 </div>
@@ -99,7 +101,8 @@
 
                                 <td>
                                     <div class="col-auto">
-                                        <button type="submit" class="btn btn-danger mb-2" @click="deleteMovimentacao(movimentacao)">
+                                        <button type="submit" class="btn btn-danger mb-2"
+                                            @click="deleteMovimentacao(movimentacao)">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                                 fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
                                                 <path
@@ -122,7 +125,7 @@
 </template>
 
 <script>
-import axios  from 'axios'
+import axios from 'axios'
 
 export default {
     name: 'Movimentacoes',
@@ -151,6 +154,7 @@ export default {
                 this.movimentacoes = response.data;
             });
         },
+
         createMovimentacao() {
             this.getMovimentacoes();
 
@@ -161,11 +165,14 @@ export default {
                     console.log(error);
                 });
             this.getMovimentacoes();
+
+            this.movimentacao = {};
         },
 
         editMovimentacao() {
 
             this.getMovimentacoes();
+
             axios.put(`/movimentacoes/${this.movimentacao.codigomovimentacao}/`, { codigocorrentista: this.movimentacao.codigocorrentista, tipotransacao: this.movimentacao.tipotransacao, valor: parseFloat(this.movimentacao.valor) }).then(() => {
                 console.log('Movimentação modificado com sucesso')
             })
@@ -173,6 +180,7 @@ export default {
                     console.log(error);
                 });
             this.getMovimentacoes();
+
             this.movimentacao = {};
         },
 

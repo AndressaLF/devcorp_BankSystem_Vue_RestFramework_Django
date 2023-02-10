@@ -34,14 +34,9 @@
                             <div class="field">
                                 <div class="field has-addons">
                                     <p class="control">
-                                        <span class="select">
-                                            <select>
-                                                <option>$</option>
-                                            </select>
-                                        </span>
                                     </p>
                                     <p class="control">
-                                        <input class="input" type="number" placeholder="Valor"
+                                        <input class="input" type="number" placeholder="$ Valor"
                                             v-model="correntista.saldo">
                                     </p>
                                 </div>
@@ -164,6 +159,7 @@ export default {
                 .catch((error) => {
                     console.log(error);
                 });
+                
             this.getCorrentista();
             this.correntista = {};
         },
